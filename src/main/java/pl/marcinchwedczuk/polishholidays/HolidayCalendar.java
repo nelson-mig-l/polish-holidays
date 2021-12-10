@@ -16,11 +16,17 @@ public class HolidayCalendar {
   }
 
   public static HolidayCalendarBuilder newBuilderWithPolishHolidaysDefined() {
-    PolishHolidaysLibrary library = new PolishHolidaysLibrary();
+    return newBuilderWithHolidaysDefined(new PolishHolidaysLibrary());
+  }
 
+  public static HolidayCalendarBuilder newBuilderWithPortugueseHolidaysDefined() {
+    return newBuilderWithHolidaysDefined(new PortugueseHolidaysLibrary());
+  }
+
+  public static HolidayCalendarBuilder newBuilderWithHolidaysDefined(HolidaysLibrary library) {
     return new HolidayCalendarBuilder()
-        .preloadHolidays(library.holidaysDefinitions())
-        .withValidFromYearIncluding(library.validSinceYearIncluding());
+            .preloadHolidays(library.holidaysDefinitions())
+            .withValidFromYearIncluding(library.validSinceYearIncluding());
   }
 
   private final Optional<Integer> validFromYearInclusive;

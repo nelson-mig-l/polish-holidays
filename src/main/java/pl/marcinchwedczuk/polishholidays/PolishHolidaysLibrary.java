@@ -7,7 +7,7 @@ import static pl.marcinchwedczuk.polishholidays.HolidayDateAlgorithms.*;
 import java.util.Arrays;
 import java.util.List;
 
-class PolishHolidaysLibrary {
+class PolishHolidaysLibrary implements HolidaysLibrary {
   private final HolidayDefinition newYear =
       HolidayDefinition.newBuilder()
           .withDate(fixedAtMonthDay(1, 1))
@@ -210,6 +210,7 @@ class PolishHolidaysLibrary {
           .withHolidayType(UNOFFICIAL)
           .build();
 
+  @Override
   public List<HolidayDefinition> holidaysDefinitions() {
     return Arrays.asList(
         newYear,
@@ -236,6 +237,7 @@ class PolishHolidaysLibrary {
         newYearsEve);
   }
 
+  @Override
   public int validSinceYearIncluding() {
     return 2000;
   }
